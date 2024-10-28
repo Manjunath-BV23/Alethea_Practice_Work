@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ping Server</title>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 1rem;
+    }
+
+    #pingResult{
+      background-color: #f4f4f4;
+      padding: 15px;
+      margin-top: 20px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ping a Server</h1>
+    <input type="text" id="ipAddress" placeholder="Enter IP address" />
+    <button id="pingButton">Ping</button>
+    <div id="pingResult"></div>
+  </div>
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    const pingButton = document.getElementById('pingButton');
+    const ipAddressInput = document.getElementById('ipAddress');
+    const pingResult = document.getElementById('pingResult');
+
+    pingButton.addEventListener("click", () => {
+        
+        const ipAddress = ipAddressInput.value;
+
+        if(!ipAddress) {
+            pingResult.textContent = "Please enter a valid IP address."
+        }
+
+        socket.emit("pingRequest", ipAddress)
+    })
+
+    socket.on('pingResponce', (result) => {
+
+        const item = document.createElement("li");
+        item.textContent = result;
+        pingResult.append(item);
+    })
+ 
+  </script>
+</body>
+</html>

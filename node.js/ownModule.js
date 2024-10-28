@@ -1,0 +1,3 @@
+exports.dateModule = () => {
+    return Date();
+}

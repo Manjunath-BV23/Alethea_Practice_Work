@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.btns {
+  margin-top: 100px;
+}
+.btn{
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 0px 10px;
+  text-decoration: none;
+  background-color: gray;
+  color: white;
+}
+
+.btn:hover{
+  background-color: rgb(42, 214, 191);
+  color: rgb(250, 101, 42);
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.result {
+  margin-top: 100px;
+}
+
+.todo-list {
+  width: 300px;
+  margin: auto;
+  text-align: left;
+  margin-top: 40px;
+  border: 2px solid gray;
+  border-radius: 10px;
+  min-height: 500px;
+}
